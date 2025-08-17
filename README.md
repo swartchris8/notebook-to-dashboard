@@ -1,17 +1,20 @@
-# E-commerce Business Analytics - Refactored Analysis
+# E-commerce Business Analytics Dashboard
+
+![Streamlit Dashboard](streamlit_screenshot.png)
 
 ## Overview
 
-This repository contains a comprehensive, refactored e-commerce analytics solution that transforms raw business data into actionable insights. The analysis focuses on revenue performance, product analytics, geographic distribution, and customer experience metrics with configurable time periods and reusable components.
+This repository contains a comprehensive e-commerce analytics solution with both Jupyter notebook analysis and a professional Streamlit dashboard. The solution transforms raw business data into actionable insights, focusing on revenue performance, product analytics, geographic distribution, and customer experience metrics.
 
 ## Repository Structure
 
 ```
 notebook-to-dashboard/
 ├── EDA_Refactored.ipynb      # Main analysis notebook with comprehensive documentation
+├── streamlit_dashboard.py    # Professional Streamlit dashboard application
 ├── data_loader.py            # Data loading and preprocessing module
 ├── business_metrics.py       # Business metrics calculation functions
-├── requirements.txt          # Python dependencies
+├── requirements.txt          # Python dependencies including Streamlit
 ├── README.md                # This documentation file
 └── ecommerce_data/          # Data directory
     ├── orders_dataset.csv
@@ -22,6 +25,23 @@ notebook-to-dashboard/
 ```
 
 ## Key Features
+
+### 📊 Streamlit Dashboard
+- **Professional Layout**: Clean header with date range filter, KPI cards, charts grid, and bottom metrics
+- **Interactive Visualizations**: Plotly-powered charts with hover details and zoom capabilities
+- **Real-time Filtering**: Global date range selection that updates all charts simultaneously
+- **Trend Indicators**: Color-coded arrows showing positive/negative trends with precise percentages
+- **Dark Theme Support**: Enhanced contrast and readability for both light and dark themes
+- **Responsive Design**: Uniform card heights and professional business styling
+- **Error Handling**: Robust zero-division protection and data validation
+
+### 📈 Dashboard Components
+- **KPI Row**: Total Revenue, Monthly Growth, Average Order Value, Total Orders (all with trend indicators)
+- **Revenue Trend Chart**: Line chart with current period (solid) vs previous period (dashed) comparison
+- **Top 10 Categories**: Horizontal bar chart with blue gradient showing revenue by product category
+- **US Choropleth Map**: Geographic revenue distribution across states with blue color intensity
+- **Delivery Satisfaction**: Bar chart showing average review scores by delivery time buckets
+- **Bottom Cards**: Average delivery time and review score with star ratings
 
 ### 🎯 Configurable Analysis Framework
 - **Time Period Configuration**: Easily analyze any date range or specific months/years
@@ -57,7 +77,22 @@ Ensure you have Python 3.8+ installed with the following packages:
 pip install -r requirements.txt
 ```
 
-### Running the Analysis
+### Running the Streamlit Dashboard
+
+1. **Start the dashboard**:
+```bash
+streamlit run streamlit_dashboard.py
+```
+
+2. **Access the dashboard**: Open your browser to `http://localhost:8501`
+
+3. **Use the date filter**: Select your desired date range in the top right corner (defaults to 2022-2023)
+
+4. **Explore the data**: All charts and KPIs update automatically based on your date selection
+
+5. **Theme support**: Dashboard automatically adapts to your browser's light/dark theme preference
+
+### Running the Jupyter Notebook Analysis
 
 1. **Configure Analysis Parameters**: Open `EDA_Refactored.ipynb` and modify the configuration section:
 

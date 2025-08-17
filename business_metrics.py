@@ -45,18 +45,32 @@ def calculate_revenue_metrics(df: pd.DataFrame,
     if comparison_df is not None:
         comp_metrics = calculate_revenue_metrics(comparison_df)
         
-        metrics['revenue_growth_rate'] = (
-            (metrics['total_revenue'] - comp_metrics['total_revenue']) / 
-            comp_metrics['total_revenue']
-        )
-        metrics['order_growth_rate'] = (
-            (metrics['total_orders'] - comp_metrics['total_orders']) / 
-            comp_metrics['total_orders']
-        )
-        metrics['aov_growth_rate'] = (
-            (metrics['average_order_value'] - comp_metrics['average_order_value']) / 
-            comp_metrics['average_order_value']
-        )
+        # Revenue growth rate (handle zero division)
+        if comp_metrics['total_revenue'] > 0:
+            metrics['revenue_growth_rate'] = (
+                (metrics['total_revenue'] - comp_metrics['total_revenue']) / 
+                comp_metrics['total_revenue']
+            )
+        else:
+            metrics['revenue_growth_rate'] = 0.0
+            
+        # Order growth rate (handle zero division)
+        if comp_metrics['total_orders'] > 0:
+            metrics['order_growth_rate'] = (
+                (metrics['total_orders'] - comp_metrics['total_orders']) / 
+                comp_metrics['total_orders']
+            )
+        else:
+            metrics['order_growth_rate'] = 0.0
+            
+        # AOV growth rate (handle zero division)
+        if comp_metrics['average_order_value'] > 0:
+            metrics['aov_growth_rate'] = (
+                (metrics['average_order_value'] - comp_metrics['average_order_value']) / 
+                comp_metrics['average_order_value']
+            )
+        else:
+            metrics['aov_growth_rate'] = 0.0
     
     return metrics
 
